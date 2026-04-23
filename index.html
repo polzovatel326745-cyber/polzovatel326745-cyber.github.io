@@ -1,0 +1,15 @@
+<h1 id="game">...</h1>
+<script>
+var url = new URL(document.URL);
+var c = url.searchParams.get("game").split("");
+var place = url.searchParams.get("place");
+var board = "TIC TAC TOE\n {0} | {1} | {2} \n---+---+---\n {3} | {4} | {5} \n---+---+---\n {6} | {7} | {8}\nTYPE s/cell_№/{9} to place an {10}!";
+function format(str,...values) {
+    return str.replace(/{(\d+)}/g, (match, index) => values[index] || match);
+};
+var filledboard = format(board,c[0],c[1],c[2],c[3],c[4],c[5],c[6],c[7],c[8],place,place);
+console.log(filledboard);
+const p = document.getElementById("game");
+console.log(p);
+p.setHTML(filledboard.replaceAll("\n","<br/>"))
+</script>
